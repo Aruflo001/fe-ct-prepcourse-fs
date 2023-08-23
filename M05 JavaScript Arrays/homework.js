@@ -85,9 +85,11 @@ function promedioResultadosTest(resultadosTest) {
    // Itera (en un bucle) los elementos del arreglo y devuelve el promedio de las notas.
    // Tu código:
    let suma = 0;
+
    for (let i = 0; i < resultadosTest.length; i++) {
-      suma + resultadosTest[i];      
+      suma += resultadosTest[i];
    }
+
    const promedio = suma / resultadosTest.length;
    return promedio;
 }
@@ -96,13 +98,15 @@ function numeroMasGrande(arrayOfNums) {
    // El parámetro "arrayOfNums" es un arreglo de números.
    // Retornar el número más grande.
    // Tu código:
-   let max = arrayOfNums [0];
+   let maxNumber = arrayOfNums[0];
+
    for (let i = 1; i < arrayOfNums.length; i++) {
-      if(arrayOfNums[i] > max) {
-         max = arrayOfNums[i];
+      if (arrayOfNums[i] > maxNumber) {
+         maxNumber = arrayOfNums[i];
       }
    }
-   return max;
+
+   return maxNumber;
 }
 
 function multiplicarArgumentos() {
@@ -140,18 +144,45 @@ function diaDeLaSemana(numeroDeDia) {
    // Realiza una función que, dado el número del día de la semana, retorne: "Es fin de semana"
    // si el día corresponde a "Sábado" o "Domingo", y "Es dia laboral" en caso contrario.
    // Tu código:
+   if (numeroDeDia === 1 || numeroDeDia === 7) {
+      return "Es fin de semana";
+   } else if (numeroDeDia>= 2 && numeroDeDia <= 6) {
+      return "Es dia laboral";
+   } else {
+      return "Numero de dia invalido";
+   }
+   
 }
 
 function empiezaConNueve(num) {
    // Esta función recibe por parámetro un número.
    // Debe retornar true si el entero inicia con 9 y false en otro caso.
    // Tu código:
+   const numStr = num.toString();
+   if (numStr.startsWith("9")) {
+      return true;
+   } else {
+      return false;
+   }
 }
 
 function todosIguales(array) {
    // Si todos los elementos del arreglo son iguales, retornar true.
    // Caso contrario retornar false.
    // Tu código:
+   if (array.length === 0) {
+      return false;
+   }
+
+   const firstElement = array[0];
+
+   for (let i = 1; i < array.length; i++) {
+      if (array[i] !== firstElement) {
+         return false;
+      }
+   }
+
+   return true;
 }
 
 function mesesDelAño(array) {
@@ -159,18 +190,51 @@ function mesesDelAño(array) {
    // "Marzo" y "Noviembre", guardarlos en un nuevo arreglo y retornarlo.
    // Si alguno de los meses no está, retornar el string: "No se encontraron los meses pedidos".
    // Tu código:
+   const mesesPedidos = ["Enero", "Marzo", "Noviembre"];
+   const mesesEncontrados = [];
+
+   for (let i = 0; i < array.length; i++) {
+      const mes = array[i];
+
+      if (mesesPedidos.includes(mes)) {
+         mesesEncontrados.push(mes);
+      }
+   }
+
+   if (mesesEncontrados.length === mesesPedidos.length) {
+      return mesesEncontrados;
+   } else {
+      return "No se encontraron los meses pedidos";
+   }
 }
 
 function tablaDelSeis() {
    // Escribe una función que muestre la tabla de multiplicar del 6 (del 0 al 60).
    // La función devuelve un arreglo con los resultados de la tabla de multiplicar del 6 en orden creciente.
    // Tu código:
+   const tabla = [];
+
+   for (let i = 0; i <= 10; i++) {
+      const resultado = 6 * i;
+      tabla.push(resultado);
+   }
+
+   return tabla;
 }
 
 function mayorACien(array) {
    // La función recibe un arreglo con enteros entre 0 y 200.
    // Recorrerlo y retornar un arreglo con todos los valores mayores a 100 (no incluye el 100).
    // Tu código:
+   const mayoresACien = [];
+
+   for (let i = 0; i < array.length; i++) {
+      if (array[i] > 100) {
+         mayoresACien.push(array[i]);
+      }
+   }
+
+   return mayoresACien;
 }
 
 /* ----------------------------------------------------------------------------------
@@ -184,6 +248,18 @@ function breakStatement(num) {
    // la ejecución y retornar el string: "Se interrumpió la ejecución".
    // [PISTA]: utiliza el statement 'break'.
    // Tu código:
+   const resultados = [];
+   
+   for (let i = 0; i < 10; i++) {
+      num += 2;
+      resultados.push(num);
+      
+      if (num === i) {
+         return "Se interrumpió la ejecución";
+      }
+   }
+   
+   return resultados; 
 }
 
 function continueStatement(num) {
@@ -193,6 +269,18 @@ function continueStatement(num) {
    // se continua con la siguiente iteración.
    // [PISTA]: utiliza el statement 'continue'.
    // Tu código:
+      const resultados = [];
+      
+      for (let i = 0; i < 10; i++) {
+         if (i === 5) {
+            continue;
+         }
+         
+         num += 2;
+         resultados.push(num);
+      }
+      
+      return resultados;
 }
 
 /*⚠️ NO MODIFIQUES NADA DEBAJO DE ESTO ⚠️*/
